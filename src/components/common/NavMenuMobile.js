@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 
 class NavMenuMobile extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <Fragment>
+
+            </Fragment>
         );
     }
 }

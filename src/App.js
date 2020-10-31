@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
-import {Button} from "react-bootstrap";
+import React, {Component, Fragment} from 'react';
+import {HashRouter} from "react-router-dom";
+import AppRoute from "./route/AppRoute";
 class App extends Component {
     render() {
         return (
-            <div>
-              <Button variant="primary">Hello World</Button>
-              <Button variant="primary"><i className="fa fa-home"></i>Hello World</Button>
-            </div>
+            <Fragment>
+    <HashRouter>
+        <AppRoute/>
+    </HashRouter>
+            </Fragment>
         );
     }
 }
