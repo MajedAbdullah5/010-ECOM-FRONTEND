@@ -6,7 +6,7 @@ class FeaturedProducts extends Component {
         return (
             <Fragment>
                 <Container className="text-center" fluid={true}>
-                    <h5 className="section-title">FEATURED PRODUCTS</h5>
+                    <h4 className="section-title">FEATURED PRODUCTS</h4>
                     <p className="section-sub-title">Some Of Our Exclusive Collection, You May Like</p>
                     <Row>
                         <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6}>

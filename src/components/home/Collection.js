@@ -7,7 +7,7 @@ class Collection extends Component {
         return (
             <Fragment>
                 <Container className="text-center card" fluid={true}>
-                    <h5 className="section-title">SPECIAL COLLECTION</h5>
+                    <h4 className="section-title">SPECIAL COLLECTION</h4>
                     <p className="section-sub-title">Some Of Our Exclusive Collection, You May Like</p>
                     <Row>
                         <Col className="p-2" xl={3} lg={3} md={3} sm={6} xs={6}>

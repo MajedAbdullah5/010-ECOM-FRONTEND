@@ -6,7 +6,7 @@ class Categories extends Component {
         return (
             <Fragment>
                 <Container className="text-center" fluid={true}>
-                    <h5 className="section-title">CATEGORIES</h5>
+                    <h4 className="section-title">CATEGORIES</h4>
                     <p className="section-sub-title">Some Of Our Exclusive Collection, You May Like</p>
                     <Row>
                         <Col key={1} xl={6} lg={6} md={6} sm={12} xs={12}>
