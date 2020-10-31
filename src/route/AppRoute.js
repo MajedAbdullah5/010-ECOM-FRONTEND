@@ -7,10 +7,7 @@ class AppRoute extends Component {
         return (
             <Fragment>
                 <Switch>
-                    <Route exact to="/" component={HomePage}>
-
-                    </Route>
-
+                    <Route exact to="/" component={HomePage}/>
                 </Switch>
             </Fragment>
         );
