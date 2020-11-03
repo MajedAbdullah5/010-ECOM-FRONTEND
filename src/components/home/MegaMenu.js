@@ -28,7 +28,7 @@ class MegaMenu extends Component {
     }
     render() {
         return (
-            <div className="accordionMenuDiv">
+            <div className="accordionMenuDiv mt-5">
                 <div className="accordionMenuDivInside">
                     <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
                     <div className="panel">

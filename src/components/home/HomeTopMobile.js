@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import MegaMenu from "./MegaMenu";
 import SliderHome from "./SliderHome";
 
 class HomeTop extends Component {
