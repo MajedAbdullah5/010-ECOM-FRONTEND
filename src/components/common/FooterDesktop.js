@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
+import {Link} from "react-router-dom";
+
 
 class FooterDesktop extends Component {
     render() {
@@ -22,7 +24,7 @@ class FooterDesktop extends Component {
                             <Col className="p-2">
                                 <h5 className="footer-menu-title">THE COMPANY</h5>
                                 <a className="footer-link">About Us</a><br/>
-                                <a className="footer-link">Contact Us</a><br/>
+                                <Link to="/contact" className="footer-link">Contact Us</Link><br/>
                                 <a className="footer-link">Our Team</a><br/><br/>
 
                                 <h5 className="footer-menu-title">OFFICE ADDRESS</h5>

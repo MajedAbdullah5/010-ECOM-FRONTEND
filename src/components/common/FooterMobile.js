@@ -9,7 +9,7 @@ class FooterMobile extends Component {
                     <Row className="px-0 mx-5 my-5">
                         <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
                             <h5 className="footer-menu-title">ABOUT COMPANY</h5>
-                            <p className="footer-text">BigExpress is considered to be the ‘game-changer’ in
+                            <p className="footer-text text-justify">BigExpress is considered to be the ‘game-changer’ in
                                 Bangladesh’s industry. Carefully-chosen raw material, environment-friendly business
                                 practice and customer-centric approach is what made BigExpress a beloved brand at
                                 home and abroad.</p>
@@ -25,7 +25,7 @@ class FooterMobile extends Component {
                             <a className="footer-link">Our Team</a><br/><br/>
 
                             <h5 className="footer-menu-title">OFFICE ADDRESS</h5>
-                            <a className="footer-link">Shekhertek 8,Mohammadpur, Adabor, Dhaka-1207, 01774688159
+                            <a className="footer-link text-justify">Shekhertek 8,Mohammadpur, Adabor, Dhaka-1207, 01774688159
                                 (Help-Line)</a><br/>
                             <a className="footer-link"> Engr.Rabbil@yahoo.com</a><br/>
                         </Col>
