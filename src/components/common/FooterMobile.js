@@ -41,6 +41,8 @@ class FooterMobile extends Component {
                             <img className="my-2" src="https://hatil.com/sites/default/files/Apple%20sign.png"
                                  alt=""/><br/>
                             <img src="https://hatil.com/sites/default/files/Android%20sign.png" alt=""/>
+                            <p className="footer-menu-title mt-3">Change Language</p>
+                            <p className=" m-0 p-0 w-25" id="google_translate_element"></p>
                         </Col>
                     </Row>
                     <Row>
