@@ -23,7 +23,7 @@ class FooterDesktop extends Component {
                             </Col>
                             <Col className="p-2">
                                 <h5 className="footer-menu-title">THE COMPANY</h5>
-                                <a className="footer-link">About Us</a><br/>
+                                <Link to="/about" className="footer-link">About Us</Link><br/>
                                 <Link to="/contact" className="footer-link">Contact Us</Link><br/>
                                 <a className="footer-link">Our Team</a><br/><br/>
 
@@ -34,9 +34,9 @@ class FooterDesktop extends Component {
                             </Col>
                             <Col className="p-2">
                                 <h5 className="footer-menu-title">MORE INFO</h5>
-                                <a className="footer-link">How To Purchase</a><br/>
-                                <a className="footer-link">Privacy Policy</a><br/>
-                                <a className="footer-link">Refund Policy</a><br/>
+                                <Link to="/purchase" className="footer-link">How To Purchase</Link><br/>
+                                <Link to="/policy" className="footer-link">Privacy Policy</Link><br/>
+                                <Link to="/refund" className="footer-link">Refund Policy</Link><br/>
                             </Col>
                             <Col className="p-2">
                                 <h5 className="footer-menu-title">DOWNLOAD OUR APPS</h5>
