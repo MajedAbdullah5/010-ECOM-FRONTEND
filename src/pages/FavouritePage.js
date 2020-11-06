@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import NavMenuMobile from "../components/common/NavMenuMobile";
+import NavMenuDesktop from "../components/Common/NavMenuDesktop";
+import NavMenuMobile from "../components/Common/NavMenuMobile";
 import Notification from "../components/Notification/Notification";
-import FooterDesktop from "../components/common/FooterDesktop";
-import FooterMobile from "../components/common/FooterMobile";
+import FooterDesktop from "../components/Common/FooterDesktop";
+import FooterMobile from "../components/Common/FooterMobile";
 import Favourite from "../components/Favourite/Favourite";
 
 class FavouritePage extends Component {

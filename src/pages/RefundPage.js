@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import NavMenuMobile from "../components/common/NavMenuMobile";
-import Contact from "../components/common/Contact";
-import FooterDesktop from "../components/common/FooterDesktop";
-import FooterMobile from "../components/common/FooterMobile";
-import Refund from "../components/others/Refund";
+import NavMenuDesktop from "../components/Common/NavMenuDesktop";
+import NavMenuMobile from "../components/Common/NavMenuMobile";
+import Contact from "../components/Common/Contact";
+import FooterDesktop from "../components/Common/FooterDesktop";
+import FooterMobile from "../components/Common/FooterMobile";
+import Refund from "../components/Others/Refund";
 
 class RefundPage extends Component {
     componentDidMount() {

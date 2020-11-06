@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import NavMenuDesktop from "./NavMenuDesktop";
-import HomeTop from "../home/HomeTop";
+import HomeTop from "../Home/HomeTop";
 import NavMenuMobile from "./NavMenuMobile";
-import HomeTopMobile from "../home/HomeTopMobile";
+import HomeTopMobile from "../Home/HomeTopMobile";
 import FooterDesktop from "./FooterDesktop";
 import FooterMobile from "./FooterMobile";
 import {Card, Container, Row, Col, Button, Form} from "react-bootstrap";

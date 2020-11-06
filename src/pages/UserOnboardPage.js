@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import NavMenuMobile from "../components/common/NavMenuMobile";
-import FooterDesktop from "../components/common/FooterDesktop";
-import FooterMobile from "../components/common/FooterMobile";
-import UserOnboard from "../components/common/UserOnboard";
+import NavMenuDesktop from "../components/Common/NavMenuDesktop";
+import NavMenuMobile from "../components/Common/NavMenuMobile";
+import FooterDesktop from "../components/Common/FooterDesktop";
+import FooterMobile from "../components/Common/FooterMobile";
+import UserOnboard from "../components/Common/UserOnboard";
 
 class UserOnboardPage extends Component {
  componentDidMount() {

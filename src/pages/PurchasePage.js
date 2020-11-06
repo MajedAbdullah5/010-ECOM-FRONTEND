@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import NavMenuMobile from "../components/common/NavMenuMobile";
-import Contact from "../components/common/Contact";
-import FooterDesktop from "../components/common/FooterDesktop";
-import FooterMobile from "../components/common/FooterMobile";
-import Purchase from "../components/others/Purchase";
+import NavMenuDesktop from "../components/Common/NavMenuDesktop";
+import NavMenuMobile from "../components/Common/NavMenuMobile";
+import Contact from "../components/Common/Contact";
+import FooterDesktop from "../components/Common/FooterDesktop";
+import FooterMobile from "../components/Common/FooterMobile";
+import Purchase from "../components/Others/Purchase";
 
 class PurchasePage extends Component {
     componentDidMount() {

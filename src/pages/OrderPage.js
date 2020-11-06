@@ -1,16 +1,12 @@
 import React, {Component, Fragment} from 'react';
-import FeaturedProducts from "../components/Home/FeaturedProducts";
-import Categories from "../components/Home/Categories";
-import Collection from "../components/Home/Collection";
-import NewArrival from "../components/Home/NewArrival";
-import HomeTop from "../components/Home/HomeTop";
 import NavMenuDesktop from "../components/Common/NavMenuDesktop";
 import NavMenuMobile from "../components/Common/NavMenuMobile";
-import HomeTopMobile from "../components/Home/HomeTopMobile";
+import Policy from "../components/Others/Policy";
 import FooterDesktop from "../components/Common/FooterDesktop";
 import FooterMobile from "../components/Common/FooterMobile";
+import OrderForm from "../components/Order/OrderForm";
 
-class HomePage extends Component {
+class OrderPage extends Component {
     componentDidMount() {
         window.scroll(0,0);
     }
@@ -20,18 +16,14 @@ class HomePage extends Component {
             <Fragment>
                 <div className="Desktop">
                     <NavMenuDesktop/>
-                    <HomeTop/>
                 </div>
 
                 <div className="Mobile">
                     <NavMenuMobile/>
-                    <HomeTopMobile/>
                 </div>
 
-                <NewArrival/>
-                <FeaturedProducts/>
-                <Collection/>
-                <Categories/>
+                <OrderForm/>
+
 
                 <div className="Desktop">
                     <FooterDesktop/>
@@ -39,9 +31,11 @@ class HomePage extends Component {
                 <div className="Mobile">
                     <FooterMobile/>
                 </div>
+
             </Fragment>
+
         );
     }
 }
 
-export default HomePage;
+export default OrderPage;
