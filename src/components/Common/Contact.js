@@ -5,8 +5,83 @@ import UserOnboard from "./UserOnboard";
 import FooterDesktop from "./FooterDesktop";
 import FooterMobile from "./FooterMobile";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import validation from "../validation/validation";
+import axios from "axios";
+import ApiURL from "../../api/ApiURL";
 
 class Contact extends Component {
+
+    constructor() {
+        super();
+        this.state={
+            name:"",
+            phone:"",
+            msg:"",
+        }
+    }
+    nameOnChange=(event)=>{
+        let name = event.target.value;
+        this.setState({name:name});
+    }
+    mobileOnChange=(event)=>{
+       let mobile =  event.target.value;
+       this.setState({phone:mobile});
+    }
+    msgOnChange=(event)=>{
+        let msg = event.target.value;
+        this.setState({msg:msg});
+    }
+    formOnSubmit=(event)=>{
+        let name = this.state.name;
+        let phone = this.state.phone;
+        let msg = this.state.msg;
+        let sendBtn = document.getElementById('sendBtn');
+        let contactForm = document.getElementById('contactForm');
+
+        if(name.length == 0){
+            alert("Name required!");
+        }
+        else if(phone.length == 0){
+            alert("Phone required!!");
+        }
+       else if(!(validation.NameRegx).test(name)){
+            alert("Invalid name");
+        }
+        else if(!(validation.MobileRegex).test(phone)){
+            alert("Invalid phone");
+        }
+        else if(msg.length == 0 ){
+            alert("Message can't be empty");
+        }
+        else{
+            sendBtn.innerHTML="Sending...";
+            let formData = new FormData();
+            formData.append("name",name)
+            formData.append("phone",phone)
+            formData.append("msg",msg)
+
+            axios.post(ApiURL.ContactDetails,formData).then(
+                function(response){
+                    if(response.status == 200 && response.data == 1){
+                        sendBtn.innerHTML="Message Successfully Sent!";
+                        setTimeout(function (){
+                            sendBtn.innerHTML="Send";
+                        },3000);
+                        contactForm.reset();
+                    }
+                    else{
+                        sendBtn.innerHTML="Message Failed to Send";
+                    }
+                }
+            ).catch(
+                function(error){
+                    alert('Data failed to insert!');
+                }
+            );
+
+        }
+        event.preventDefault();
+    }
     render() {
         return (
             <Fragment>
@@ -15,13 +90,13 @@ class Contact extends Component {
                         <Col className="shadow-sm bg-white mt-2" lg={12} md={12} sm={12} xs={12}>
                             <Row className="text-center">
                                 <Col className="d-flex justify-content-center" lg={6} md={6} xs={12} sm={12}>
-                                    <Form className="onboardForm">
+                                    <Form id="contactForm" onSubmit={this.formOnSubmit} className="onboardForm">
                                         <h4 className="section-title ">SEND MESSAGE</h4>
                                         <h6 className="section-sub-title mb-5">Please Enter Your Message</h6>
-                                        <input className="form-control section-sub-title m-2" type="text" placeholder="Your Name"/>
-                                        <input className="form-control section-sub-title m-2" type="text" placeholder="Your Mobile"/>
-                                        <input className="form-control section-sub-title m-2" type="text" placeholder="Your Message"/>
-                                        <Button className="btn btn-block m-2 site-btn">Next</Button>
+                                        <input onChange={this.nameOnChange} className="form-control section-sub-title m-2" type="text" placeholder="Your Name"/>
+                                        <input onChange={this.mobileOnChange} className="form-control section-sub-title m-2" type="text" placeholder="Your Mobile"/>
+                                        <input onChange={this.msgOnChange} className="form-control section-sub-title m-2" type="text" placeholder="Your Message"/>
+                                        <Button id="sendBtn" type="submit" className="btn btn-block m-2 site-btn">Send</Button>
                                     </Form>
                                 </Col>
                                 <Col className="m-0 p-0 Desktop" md={6} lg={6} sm={12} xs={12}>
