@@ -8,6 +8,8 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import validation from "../validation/validation";
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Contact extends Component {
 
@@ -39,19 +41,19 @@ class Contact extends Component {
         let contactForm = document.getElementById('contactForm');
 
         if(name.length == 0){
-            alert("Name required!");
+            toast.error("Name required!");
         }
         else if(phone.length == 0){
-            alert("Phone required!!");
+            toast.error("Phone required!!");
         }
        else if(!(validation.NameRegx).test(name)){
-            alert("Invalid name");
+            toast.error("Invalid name");
         }
         else if(!(validation.MobileRegex).test(phone)){
-            alert("Invalid phone");
+            toast.error("Invalid phone");
         }
         else if(msg.length == 0 ){
-            alert("Message can't be empty");
+            toast.error("Message can't be empty");
         }
         else{
             sendBtn.innerHTML="Sending...";
@@ -63,19 +65,22 @@ class Contact extends Component {
             axios.post(ApiURL.ContactDetails,formData).then(
                 function(response){
                     if(response.status == 200 && response.data == 1){
-                        sendBtn.innerHTML="Message Successfully Sent!";
+                        toast.success("Message Sent!");
                         setTimeout(function (){
                             sendBtn.innerHTML="Send";
                         },3000);
                         contactForm.reset();
                     }
+
                     else{
-                        sendBtn.innerHTML="Message Failed to Send";
+                        toast.error("Message Failed to Sent!",{
+
+                        });
                     }
                 }
             ).catch(
                 function(error){
-                    alert('Data failed to insert!');
+                    toast.error('Data failed to insert!');
                 }
             );
 
@@ -107,6 +112,7 @@ class Contact extends Component {
                             </Row>
                         </Col>
                     </Row>
+                    <ToastContainer />
                 </Container>
             </Fragment>
         );
