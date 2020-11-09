@@ -3,6 +3,8 @@ import  {Col, Container, Row, Card} from "react-bootstrap";
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
 import ReactHtmlParser, {processNodes, convertNodeToElement, htmlparser2} from 'react-html-parser';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class About extends Component {
     constructor() {
@@ -18,13 +20,17 @@ class About extends Component {
         if (sessionStorage.getItem("SiteInfoAbout") == null) {
             axios.get(ApiURL.SendSiteInfo).then(response => {
                 let StatusCode = response.status;
-                if (StatusCode == 200) {
+                if (StatusCode == 200 && response.data == 1) {
                     this.setState({mainDiv:"",loaderDiv:false})
                     let JSONData = (response.data)[0]['about'];
                     sessionStorage.setItem("SiteInfoAbout", JSONData);
                     this.setState({about: JSONData});
                 }
+                else{
+                    toast.error("Failed to fetch data!");
+                }
             }).catch(function (error) {
+                toast.error("Server Error!");
             });
         } else {
             this.setState({about: sessionStorage.getItem("SiteInfoAbout"),mainDiv:"",loaderDiv:"d-none"});
@@ -82,6 +88,7 @@ class About extends Component {
                         </Card>
                     </Row>
                 </Container>
+                <ToastContainer/>
             </Fragment>
         );
     }

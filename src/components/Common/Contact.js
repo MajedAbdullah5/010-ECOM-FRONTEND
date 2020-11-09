@@ -8,7 +8,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import validation from "../validation/validation";
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 class Contact extends Component {
@@ -112,7 +112,7 @@ class Contact extends Component {
                             </Row>
                         </Col>
                     </Row>
-                    <ToastContainer />
+                    <ToastContainer/>
                 </Container>
             </Fragment>
         );
