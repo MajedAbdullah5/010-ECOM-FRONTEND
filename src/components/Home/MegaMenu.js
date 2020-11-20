@@ -2,198 +2,43 @@ import React, {Component} from 'react';
 import {Button} from "react-bootstrap";
 
 class MegaMenu extends Component {
-   constructor() {
+   constructor(props) {
        super();
-       this.MegaMenu = this.MegaMenu.bind(this);
    }
-   componentDidMount() {
-       this.MegaMenu();
-   }
+  MenuItemClick=(event)=>{
+        event.target.classList.toggle("active");
+      let panel = event.target.nextElementSibling;
+      if(panel.style.maxHeight){
+          panel.style.maxHeight=null;
+      }else{
+          panel.style.maxHeight=panel.scrollHeight + "px"
+      }
 
-    MegaMenu(){
-         var acc =  document.getElementsByClassName("accordion");
-         var accNum = acc.length;
-            for(let i = 0; i<accNum; i++){
-                acc[i].addEventListener("click",function(){
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if(panel.style.maxHeight){
-                        panel.style.maxHeight=null;
-                    }else{
-                        panel.style.maxHeight=panel.scrollHeight + "px"
-                    }
-                })
+  }
 
-            }
-    }
     render() {
+
+        let ParentList = this.props.data;
+        let MyView = ParentList.map((ParentList,i)=>{
+            return <div key={i.toString()}>
+                <Button onClick={this.MenuItemClick} className="accordion"><img className="accordionMenuIcon" src={ParentList.ParentCategoryImg}/>{ParentList.ParentCategoryName}</Button>
+                <div className="panel">
+                    <ul>
+                        {
+                            (ParentList.SubCategory).map((ChildList,i)=>{
+                                return <li><a href="#" className="accordionItem"></a>{ChildList.cat2_name}</li>
+                            })
+                        }
+                    </ul>
+                </div>
+            </div>
+        })
+
         return (
             <div className="accordionMenuDiv mt-5">
                 <div className="accordionMenuDivInside">
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
-                    <Button className="accordion"><img className="accordionMenuIcon" src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's Clothing</Button>
-                    <div className="panel">
-                        <ul>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItem"></a>Man Shirt</li>
-                        </ul>
-                    </div>
+                    {MyView}
                 </div>
-
             </div>
         );
     }
