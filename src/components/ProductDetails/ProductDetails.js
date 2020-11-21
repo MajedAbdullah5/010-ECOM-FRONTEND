@@ -90,7 +90,7 @@ class ProductDetails extends Component {
                                             <input className="form-control text-center w-50" type="number" min="1"/>
                                         </Col>
                                         <Col className="my-3" xs={12} xl={12} lg={12} sm={12} md={12}>
-                                            <Button className="btn-danger mr-1"><i className="fas fa-shopping-cart"></i> Add To Cart</Button>
+                                             <Button className="btn-danger mr-1"><i className="fas fa-shopping-cart"></i> Add To Cart</Button>
                                             <Button className="mr-1"> <i className="fas fa-car"></i> Order Now</Button>
                                             <Button className="mr-1"> <i className="fas fa-heart"></i> Favourite</Button>
                                         </Col>

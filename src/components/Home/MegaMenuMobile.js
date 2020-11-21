@@ -36,12 +36,7 @@ class MegaMenuMobile extends Component {
                                                        src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's
                         Clothing</Button>
                     <div className="panelMobile">
-                        <ul>
-                            <li><a href="#" className="accordionItemMobile"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItemMobile"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItemMobile"></a>Man Shirt</li>
-                            <li><a href="#" className="accordionItemMobile"></a>Man Shirt</li>
-                        </ul>
+
                     </div>
                     <Button className="accordionMobile"><img className="accordionMenuIconMobile"
                                                        src="https://demo.ecom.rabbil.com/static/media/tshirt.87175310.svg"/> Men's
