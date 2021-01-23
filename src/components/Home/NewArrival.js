@@ -3,12 +3,25 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import {Card, Container} from "react-bootstrap";
+import axios from "axios";
+import ApiURL from "../../api/ApiURL";
 
 class NewArrival extends Component {
+    componentDidMount() {
+        axios.get(ApiURL.newArrival).then(response=>{
+            if(response.status == 200){
+                this.setState({newArrival:response.data})
+            }
+        }).catch();
+    }
+
     constructor(props) {
         super(props);
         this.next = this.next.bind(this);
         this.previous = this.previous.bind(this);
+        this.state={
+            newArrival:[],
+        }
 
     }
 
@@ -59,6 +72,20 @@ class NewArrival extends Component {
                 }
             ]
         };
+
+        let ParentList = this.state.newArrival;
+        const MyList = ParentList.map((ParentList,i)=>{
+
+            return <Card className="image-box  w-100 card">
+                <img className=""
+                     src={ParentList.thumbnail}/>
+                <Card.Body>
+                    <p className="product-name-on-card">{ParentList.title}</p>
+                    <p className="product-price-on-card">{ParentList.price}</p>
+                </Card.Body>
+            </Card>
+
+        })
         return (
             <Container fluid={true} className="text-center mb-5">
                 <h4 className="section-title">NEW ARRIVAL
@@ -71,107 +98,8 @@ class NewArrival extends Component {
                 </h4>
                 <p className="section-sub-title">Some Of Our Exclusive Collection, You May</p>
                 <Slider ref={c => (this.slider = c)} {...settings}>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div>
-                        <Card className="image-box  w-100 card">
-                            <img className=""
-                                 src="https://static-01.daraz.com.bd/p/66ec675d545eeabf8eb04415318d3db5.jpg_400x400q75-product.jpg"/>
-                            <Card.Body>
-                                <p className="product-name-on-card">ASUS TUF A15 FA506IU Ryzen 7 4800 GTX</p>
-                                <p className="product-price-on-card">Price:3000TK</p>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                </Slider>
+                {MyList}
+            </Slider>
             </Container>
         );
     }

@@ -31,7 +31,7 @@ class Categories extends Component {
         let ParentList = this.state.MenuData;
         const MyList = ParentList.map((ParentList, i) => {
             return <Col className="p-0" key={i.toString()} xl={2} lg={2} md={2} sm={6} xs={6}>
-                <Link to={"/ProductListByCategory/" + ParentList.ParentCategoryName}>
+                <Link to={"/productDetails/" + ParentList.ParentCategoryName}>
                     <Card className=" w-100 ">
                         <img className="w-100"
                              src={ParentList.ParentCategoryImg}/>

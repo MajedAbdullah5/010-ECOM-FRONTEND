@@ -7,8 +7,16 @@ import ProductDetails from "../components/ProductDetails/ProductDetails";
 import SuggestedProducts from "../components/ProductDetails/SuggestedProducts";
 
 class ProductDetailsPage extends Component {
+    constructor({match}) {
+        super();
+        this.state={
+            code:match.params.code,
+        }
+    }
+    
     componentDidMount() {
         window.scroll(0,0);
+        alert(this.state.code);
     }
 
     render() {

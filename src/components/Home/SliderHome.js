@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import Slider from "react-slick";
+import {Link} from "react-router-dom";
 
 class SliderHome extends Component {
 
@@ -27,7 +28,7 @@ class SliderHome extends Component {
                             <h1 style={{color: SliderInfo.text_color}} className="sliderTitle">{SliderInfo.title}</h1>
                             <h1 style={{color: SliderInfo.text_color}}
                                 className="sliderSubTitle">{SliderInfo.sub_title}</h1>
-                            <button className="btn site-btn px-5">More Info</button>
+                            <Link to={"/productDetails/"+SliderInfo.product_code} className="btn site-btn px-5">More Info</Link>
                         </div>
                         <div className="col-md-6 text-center">
                             <img className="sliderImg" src={SliderInfo.image}/>

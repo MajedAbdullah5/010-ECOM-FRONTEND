@@ -3,6 +3,8 @@ import {Container, Row, Col,Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class ProductDetails extends Component {
+
+
     render() {
         return (
             <Fragment>

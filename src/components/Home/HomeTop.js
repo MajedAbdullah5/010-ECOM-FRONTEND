@@ -4,13 +4,16 @@ import MegaMenu from "./MegaMenu";
 import SliderHome from "./SliderHome";
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
+import SliderLoader from "../Placeholder/SliderLoader";
 
 class HomeTop extends Component {
     constructor() {
         super();
         this.state = {
             MenuData: [],
-            SliderData:[]
+            SliderData:[],
+            isLoading:"",
+            mainDiv:"d-none"
         }
     }
 
@@ -23,7 +26,7 @@ class HomeTop extends Component {
             }
         );
         axios.get(ApiURL.SendSliderInfo).then(response=>{
-          this.setState({SliderData:response.data})
+          this.setState({SliderData:response.data,isLoading:"d-none",mainDiv:" "})
 
         }).catch(error=>{
 
@@ -33,13 +36,19 @@ class HomeTop extends Component {
     render() {
         return (
             <Fragment>
-                <Container fluid={true} className="p-0 overflow-hidden mt-5">
-                    <Row>
-                        <Col lg={3} md={3} sm={12}><MegaMenu data={this.state.MenuData}/></Col>
-                        <Col lg={9} md={9} sm={12}><SliderHome data={this.state.SliderData}/></Col>
+                <SliderLoader isLoading={this.state.isLoading}/>
+             <div className={this.state.mainDiv}>
+                <Container className="p-0 TopSection overflow-hidden" fluid={true}>
+                    <Row className="p-0 m-0 overflow-hidden">
+                        <Col className="p-0 m-0 overflow-hidden" lg={3} md={3} sm={12}>
+                            <MegaMenu data={this.state.MenuData}/>
+                        </Col>
+                        <Col className="p-0 m-0 overflow-hidden" lg={9} md={9} sm={12}>
+                            <SliderHome data={this.state.SliderData}/>
+                        </Col>
                     </Row>
                 </Container>
-
+             </div>
             </Fragment>
         );
     }
