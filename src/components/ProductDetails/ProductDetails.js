@@ -1,36 +1,44 @@
 import React, {Component, Fragment} from 'react';
-import {Container, Row, Col,Button} from "react-bootstrap";
+import {Container, Row, Col, Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
 class ProductDetails extends Component {
 
-
     render() {
+        let data = this.props.product_details;
+        // let title = data['productList'][0]['title'];
+        // alert(data.productList.indexOf(0).title);
+        // let img1 = data['productCode'][0]['img1'];
+        // let img2 = data['productCode'][0]['img2'];
+        // let img3 = data['productCode'][0]['img3'];
+        // let img4 = data['productCode'][0]['img4'];
+
+
         return (
             <Fragment>
-                <Container className="TopSection onboardMargin mt-5 pt-5">
+                <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
                     <Row>
                         <Col lg={12} md={12} xl={12} sm={12} xs={12}>
                             <Row>
                                 <Col lg={6} md={6} sm={12} xs={12}>
                                     <Row>
                                         <Col sm={12} lg={12} md={12} xs={12} xl={12}>
-                                            <img width="100%" height="295px" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/10/16/online-clothes-shops-hero.jpg?width=990" alt=""/>
+                                            {/*<img width="100%" height="295px" src={img1} alt=""/>*/}
                                         </Col>
                                         <Col sm={12} lg={12} md={12} xs={12} xl={12}>
                                             <Container className="my-3">
                                             <Row>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    <img className="w-100 h-75" height="" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/10/16/online-clothes-shops-hero.jpg?width=990" alt=""/>
+                                                    {/*<img className="w-100 h-75" height="" src={img2} alt=""/>*/}
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    <img className="w-100 h-75" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/10/16/online-clothes-shops-hero.jpg?width=990" alt=""/>
+                                                    {/*<img className="w-100 h-75" src={img3} alt=""/>*/}
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    <img className="w-100 h-75"  src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/10/16/online-clothes-shops-hero.jpg?width=990" alt=""/>
+                                                    {/*<img className="w-100 h-75"  src={img4} alt=""/>*/}
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    <img className="w-100 h-75" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/10/16/online-clothes-shops-hero.jpg?width=990" alt=""/>
+                                                    {/*<img className="w-100 h-75" src={img1} alt=""/>*/}
                                                 </Col>
                                             </Row>
                                             </Container>
@@ -47,7 +55,7 @@ class ProductDetails extends Component {
                                 <Col lg={6} md={6} sm={12} xs={12}>
                                     <Row>
                                         <Col xs={12} xl={12} lg={12} sm={12} md={12}>
-                                            <h4 className="details-section-title">ASUS TUF A15 FA506IU Ryzen 7 4800H GTX</h4>
+                                            {/*<h4 className="details-section-title">{title}</h4>*/}
                                             <p className="section-sub-title">You May Like Some Of Our Exclusive Collection</p>
                                             <p className="price-box">Regular Price 200</p>
                                             <p className="price-box">50% Discount</p>
@@ -105,18 +113,12 @@ class ProductDetails extends Component {
                                             <h5 className="section-title">Rabbil Hassan <span><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></span></h5>
                                             <p className="section-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, architecto aut dignissimos facere impedit nihil obcaecati praesentium quasi repellat suscipit.</p>
                                         </Col>
-
                                     </Row>
                                 </Col>
-
                             </Row>
-
-
-
                         </Col>
                     </Row>
                 </Container>
-                
             </Fragment>
         );
     }

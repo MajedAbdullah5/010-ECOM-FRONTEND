@@ -3,6 +3,7 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import axios from 'axios';
 import ApiURL from "../../api/ApiURL";
 import {Link} from "react-router-dom";
+import SpecialCollectionPlaceholder from "../Placeholder/SpecialCollectionPlaceholder";
 
 
 class Collection extends Component {
@@ -10,12 +11,14 @@ class Collection extends Component {
         super();
         this.state={
             special_collection:[],
+            isLoading:"",
+            mainDiv:"d-none"
         }
     }
     componentDidMount() {
         axios.get(ApiURL.specialCollection).then(response=>{
             if(response.status == 200){
-                this.setState({special_collection:response.data});
+                this.setState({special_collection:response.data,isLoading:"d-none",mainDiv:""});
             }
         }).catch(error=>{
 
@@ -39,7 +42,10 @@ class Collection extends Component {
             </Col>
         })
         return (
+
             <Fragment>
+                <SpecialCollectionPlaceholder isLoading={this.state.isLoading}/>
+                <div className={this.state.mainDiv}>
                 <Container className="text-center card" fluid={true}>
                     <h4 className="section-title">SPECIAL COLLECTION</h4>
                     <p className="section-sub-title">Some Of Our Exclusive Collection, You May Like</p>
@@ -47,6 +53,7 @@ class Collection extends Component {
                         {MyData}
                     </Row>
                 </Container>
+                </div>
             </Fragment>
         );
     }

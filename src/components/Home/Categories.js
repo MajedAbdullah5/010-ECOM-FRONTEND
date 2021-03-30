@@ -3,23 +3,23 @@ import {Card, Col, Container, Row} from "react-bootstrap";
 import axios from 'axios';
 import ApiURL from "../../api/ApiURL";
 import {Link} from "react-router-dom";
+import CategoryPlaceholder from "../Placeholder/CategoryPlaceholder";
 
 class Categories extends Component {
     constructor() {
         super();
         this.state = {
             MenuData: [],
-            loaderDiv: true,
-            mainDiv: "d-none"
+            mainDiv: "d-none",
+            isLoading:""
         }
     }
 
     componentDidMount() {
         axios.get(ApiURL.SendCategoryDetails).then(response => {
                 if (response.status == 200) {
-                    this.setState({MenuData: response.data, loaderDiv: "d-none", mainDiv: ""})
+                    this.setState({MenuData: response.data, isLoading: "d-none", mainDiv: ""})
                 }
-
             }
         ).catch(error => {
 
@@ -31,7 +31,7 @@ class Categories extends Component {
         let ParentList = this.state.MenuData;
         const MyList = ParentList.map((ParentList, i) => {
             return <Col className="p-0" key={i.toString()} xl={2} lg={2} md={2} sm={6} xs={6}>
-                <Link to={"/productDetails/" + ParentList.ParentCategoryName}>
+                <Link to={"/productListByCategory/" + ParentList.ParentCategoryName}>
                     <Card className=" w-100 ">
                         <img className="w-100"
                              src={ParentList.ParentCategoryImg}/>
@@ -46,6 +46,8 @@ class Categories extends Component {
 
         return (
             <Fragment>
+                <CategoryPlaceholder isLoading={this.state.isLoading}/>
+                <div className={this.state.mainDiv}>
                 <Container className="text-center" fluid={true}>
                     <h4 className="section-title">CATEGORIES</h4>
                     <p className="section-sub-title">Some Of Our Exclusive Collection, You May Like</p>
@@ -55,44 +57,7 @@ class Categories extends Component {
                         </Row>
                     </Row>
                 </Container>
-
-                <Card className={this.state.loaderDiv}>
-                    <Card.Body>
-                        <div className="ph-item">
-                            <div className="ph-col-12">
-                                <div className="ph-row">
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="ph-item">
-                            <div className="ph-col-12">
-                                <div className="ph-row">
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                    <div className="ph-col-12"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </Card.Body>
-                </Card>
+                </div>
             </Fragment>
         );
     }

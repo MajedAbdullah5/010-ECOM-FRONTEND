@@ -5,45 +5,86 @@ import FooterDesktop from "../components/Common/FooterDesktop";
 import FooterMobile from "../components/Common/FooterMobile";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import SuggestedProducts from "../components/ProductDetails/SuggestedProducts";
+import axios from "axios";
+import ApiURL from "../api/ApiURL";
+import SliderLoader from "../components/Placeholder/SliderLoader";
 
 class ProductDetailsPage extends Component {
     constructor({match}) {
         super();
         this.state={
             code:match.params.code,
+            data:[],
+            isLoading:'',
+            mainDiv:'d-none',
+
+
         }
     }
     
     componentDidMount() {
         window.scroll(0,0);
-        alert(this.state.code);
+        axios.get(ApiURL.ProductDetails(this.state.code)).then(response=>{
+            if(response.status == 200){
+                this.setState({code:response.data, isLoading:'d-none',mainDiv:''})
+            }
+        }).catch(error=>{
+
+        });
     }
 
     render() {
-        return (
-            <Fragment>
-                <div className="Desktop">
-                    <NavMenuDesktop/>
-                </div>
+        if(this.state.mainDiv == "d-none"){
+            return (
+                <Fragment>
+                    <div className="Desktop">
+                        <NavMenuDesktop/>
+                    </div>
 
-                <div className="Mobile">
-                    <NavMenuMobile/>
-                </div>
+                    <div className="Mobile">
+                        <NavMenuMobile/>
+                    </div>
+                    <SliderLoader isLoading={this.state.isLoading}/>
+                    {/*<ProductDetails product_details={this.state.data}/>*/}
+                    <SuggestedProducts/>
 
-                <ProductDetails/>
-                <SuggestedProducts/>
 
+                    <div className="Desktop">
+                        <FooterDesktop/>
+                    </div>
+                    <div className="Mobile">
+                        <FooterMobile/>
+                    </div>
 
-                <div className="Desktop">
-                    <FooterDesktop/>
-                </div>
-                <div className="Mobile">
-                    <FooterMobile/>
-                </div>
+                </Fragment>
 
-            </Fragment>
+            );
 
-        );
+        }else{
+            return (
+                <Fragment>
+                    <div className="Desktop">
+                        <NavMenuDesktop/>
+                    </div>
+
+                    <div className="Mobile">
+                        <NavMenuMobile/>
+                    </div>
+                    <ProductDetails product_details={this.state.data}/>
+                    <SuggestedProducts/>
+                    <div className="Desktop">
+                        <FooterDesktop/>
+                    </div>
+                    <div className="Mobile">
+                        <FooterMobile/>
+                    </div>
+
+                </Fragment>
+
+            );
+
+        }
+
     }
 }
 
