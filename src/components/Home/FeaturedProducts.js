@@ -31,7 +31,8 @@ class FeaturedProducts extends Component {
     render() {
         let ParentList = this.state.featured_product_data;
         const MyList = ParentList.map((ParentList, i) => {
-            return <Col className="p-1" key={1} xl={2} lg={2} md={2} sm={4} xs={6}>
+            if(ParentList.special_price == "NA"){
+            return <Col className="p-1" key={i.toString()} xl={2} lg={2} md={2} sm={4} xs={6}>
                 <Link to={"/productDetails/" + ParentList.product_code}>
                     <Card className="image-box  w-100 card">
                         <img className=""
@@ -39,12 +40,27 @@ class FeaturedProducts extends Component {
                         <Card.Body>
                             <p className="product-name-on-card">{ParentList.title}</p>
                             <span><p
-                                className="product-price-on-card">{ParentList.discount_price}</p><strike>{ParentList.price}</strike></span>
+                                className="product-price-on-card">{ParentList.discount_price}</p></span>
                         </Card.Body>
                     </Card>
                 </Link>
             </Col>
-
+            }
+            else{
+                return <Col className="p-1" key={i.toString()} xl={2} lg={2} md={2} sm={4} xs={6}>
+                    <Link to={"/productDetails/" + ParentList.product_code}>
+                        <Card className="image-box  w-100 card">
+                            <img className=""
+                                 src={ParentList.image}/>
+                            <Card.Body>
+                                <p className="product-name-on-card">{ParentList.title}</p>
+                                <span><p
+                                    className="product-price-on-card">{ParentList.discount_price}</p><strike>{ParentList.price}</strike></span>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </Col>
+            }
         });
         return (
             <Fragment>

@@ -12,29 +12,27 @@ import SliderLoader from "../components/Placeholder/SliderLoader";
 class ProductDetailsPage extends Component {
     constructor({match}) {
         super();
-        this.state={
-            code:match.params.code,
-            data:[],
-            isLoading:'',
-            mainDiv:'d-none',
-
-
+        this.state = {
+            code: match.params.code,
+            ProductData: [],
+            isLoading:"",
+            mainDiv: "d-none",
         }
     }
-    
+
     componentDidMount() {
-        window.scroll(0,0);
-        axios.get(ApiURL.ProductDetails(this.state.code)).then(response=>{
-            if(response.status == 200){
-                this.setState({code:response.data, isLoading:'d-none',mainDiv:''})
+        window.scroll(0, 0);
+        axios.get(ApiURL.ProductDetails(this.state.code)).then(response => {
+            if (response.status == 200) {
+                this.setState({ProductData: response.data,isLoading:"d-none", mainDiv: ''});
             }
-        }).catch(error=>{
+        }).catch(error => {
 
         });
     }
-
     render() {
-        if(this.state.mainDiv == "d-none"){
+
+        if(this.state.isLoading === "d-none"){
             return (
                 <Fragment>
                     <div className="Desktop">
@@ -44,33 +42,7 @@ class ProductDetailsPage extends Component {
                     <div className="Mobile">
                         <NavMenuMobile/>
                     </div>
-                    <SliderLoader isLoading={this.state.isLoading}/>
-                    {/*<ProductDetails product_details={this.state.data}/>*/}
-                    <SuggestedProducts/>
-
-
-                    <div className="Desktop">
-                        <FooterDesktop/>
-                    </div>
-                    <div className="Mobile">
-                        <FooterMobile/>
-                    </div>
-
-                </Fragment>
-
-            );
-
-        }else{
-            return (
-                <Fragment>
-                    <div className="Desktop">
-                        <NavMenuDesktop/>
-                    </div>
-
-                    <div className="Mobile">
-                        <NavMenuMobile/>
-                    </div>
-                    <ProductDetails product_details={this.state.data}/>
+                    <ProductDetails ProductData={this.state.ProductData}/>
                     <SuggestedProducts/>
                     <div className="Desktop">
                         <FooterDesktop/>
@@ -80,11 +52,31 @@ class ProductDetailsPage extends Component {
                     </div>
 
                 </Fragment>
-
             );
-
         }
+        else{
+        return (
+            <Fragment>
+                <div className="Desktop">
+                    <NavMenuDesktop/>
+                </div>
 
+                <div className="Mobile">
+                    <NavMenuMobile/>
+                </div>
+                <SliderLoader/>
+                {/*<ProductDetails ProductData={this.state.ProductData}/>*/}
+                {/*<SuggestedProducts/>*/}
+                <div className="Desktop">
+                    <FooterDesktop/>
+                </div>
+                <div className="Mobile">
+                    <FooterMobile/>
+                </div>
+
+            </Fragment>
+        );
+        }
     }
 }
 

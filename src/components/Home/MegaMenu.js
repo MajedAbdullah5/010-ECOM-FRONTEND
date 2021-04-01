@@ -22,8 +22,8 @@ class MegaMenu extends Component {
 
         let ParentList = this.props.data;
         let MyView = ParentList.map((ParentList, i) => {
-            return <div key={i.toString()}>
-                <Button onClick={this.MenuItemClick} className="accordion"><img className="accordionMenuIcon"
+            return <div>
+                <Button onClick={this.MenuItemClick} className="accordion"><img key={i.toString()} className="accordionMenuIcon"
                                                                                 src={ParentList.ParentCategoryImg}/>{ParentList.ParentCategoryName}
                 </Button>
                 <div className="panel">

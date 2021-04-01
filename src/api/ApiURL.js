@@ -18,7 +18,7 @@ class ApiURL {
         return this.BaseURL + "ProductListByCategory/" + Category;
     }
     static ProductDetails(ProductCode){
-        return this.BaseURL + "productDetails/"+ ProductCode;
+        return this.BaseURL + "productDetails/" + ProductCode;
     }
     static featuredProducts = this.BaseURL+"featuredProducts";
     static specialCollection = this.BaseURL+"special_collection";

@@ -28,7 +28,7 @@ class Collection extends Component {
     render() {
         let ParentList = this.state.special_collection;
         const MyData = ParentList.map((ParentList,i)=>{
-            return <Col className="p-2" xl={3} lg={3} md={3} sm={6} xs={6}>
+            return <Col className="p-2" key={i.toString()} xl={3} lg={3} md={3} sm={6} xs={6}>
                 <Link to={"/productDetails/" + ParentList.product_code}>
                 <Card className="image-box  w-100 card">
                     <img className=""

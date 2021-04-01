@@ -1,17 +1,37 @@
 import React, {Component, Fragment} from 'react';
 import {Container, Row, Col, Button, Card} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import ReactHtmlParser, {processNodes, convertNodeToElement, htmlparser2} from 'react-html-parser';
 
 class ProductDetails extends Component {
+    setOnClick(event){
+        let att = event.target.getAttribute('src');
+        document.getElementById("main-image").setAttribute('src',att);
+    }
 
     render() {
-        let data = this.props.product_details;
-        // let title = data['productList'][0]['title'];
+        let data = this.props.ProductData;
+        console.log(data);
+        let title = data['productList'][0]['title'];
+        let brand = data['productList'][0]['brand'];
+        let category = data['productList'][0]['category'];
+        let discount_price = data['productList'][0]['discount_price'];
+        let main_image = data['productList'][0]['image'];
+        let price = data['productList'][0]['price'];
+        let remark = data['productList'][0]['remark'];
+        let special_price = data['productList'][0]['special_price'];
+        let star = data['productList'][0]['star'];
+        let subcategory = data['productList'][0]['subcategory'];
+
+        let des = data['productCode'][0]['des'];
+        let details = data['productCode'][0]['details'];
         // alert(data.productList.indexOf(0).title);
-        // let img1 = data['productCode'][0]['img1'];
-        // let img2 = data['productCode'][0]['img2'];
-        // let img3 = data['productCode'][0]['img3'];
-        // let img4 = data['productCode'][0]['img4'];
+        let img1 = data['productCode'][0]['img1'];
+        let img2 = data['productCode'][0]['img2'];
+        let img3 = data['productCode'][0]['img3'];
+        let img4 = data['productCode'][0]['img4'];
+        let size = data['productCode'][0]['size'];
+        let color = data['productCode'][0]['color'];
+
 
 
         return (
@@ -23,30 +43,30 @@ class ProductDetails extends Component {
                                 <Col lg={6} md={6} sm={12} xs={12}>
                                     <Row>
                                         <Col sm={12} lg={12} md={12} xs={12} xl={12}>
-                                            {/*<img width="100%" height="295px" src={img1} alt=""/>*/}
+                                            <img id="main-image" width="100%" height="295px" src={main_image} alt=""/>
                                         </Col>
                                         <Col sm={12} lg={12} md={12} xs={12} xl={12}>
                                             <Container className="my-3">
                                             <Row>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    {/*<img className="w-100 h-75" height="" src={img2} alt=""/>*/}
+                                                    <img onClick={this.setOnClick} className="w-100 h-75" height="" src={img1} alt=""/>
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    {/*<img className="w-100 h-75" src={img3} alt=""/>*/}
+                                                    <img onClick={this.setOnClick} className="w-100 h-75" src={img2} alt=""/>
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    {/*<img className="w-100 h-75"  src={img4} alt=""/>*/}
+                                                    <img onClick={this.setOnClick} className="w-100 h-75"  src={img3} alt=""/>
                                                 </Col>
                                                 <Col className="p-0 m-0" lg={3} ms={3} sm={6} xs={6} xl={3}>
-                                                    {/*<img className="w-100 h-75" src={img1} alt=""/>*/}
+                                                    <img onClick={this.setOnClick} className="w-100 h-75" src={img4} alt=""/>
                                                 </Col>
                                             </Row>
                                             </Container>
                                         </Col>
                                         <Col>
-                                            <h4 className="details-section-title">Details</h4>
-                                            <p className="section-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet architecto at atque deserunt doloribus et fuga illo itaque magnam minima minus, modi mollitia quam quidem ratione saepe voluptates. Odit?</p>
-                                            <p className="section-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet architecto at atque deserunt doloribus et fuga illo itaque magnam minima minus, modi mollitia quam quidem ratione saepe voluptates. Odit?</p>
+                                            <h4 className="details-section-title">{title}</h4>
+                                            <p className="section-sub-title text-justify">{ ReactHtmlParser(details) }</p>
+                                            {/*<p className="section-sub-title text-justify">{details}</p>*/}
                                         </Col>
 
 
@@ -56,10 +76,10 @@ class ProductDetails extends Component {
                                     <Row>
                                         <Col xs={12} xl={12} lg={12} sm={12} md={12}>
                                             {/*<h4 className="details-section-title">{title}</h4>*/}
-                                            <p className="section-sub-title">You May Like Some Of Our Exclusive Collection</p>
-                                            <p className="price-box">Regular Price 200</p>
+                                            <p className="section-sub-title">{des}</p>
+                                            <p className="price-box">Regular Price {price}</p>
                                             <p className="price-box">50% Discount</p>
-                                            <p className="price-box">New Price 100</p>
+                                            <p className="price-box">New Price {discount_price}</p>
                                         </Col>
                                         <Col xs={12} xl={12} lg={12} sm={12} md={12}>
                                             <h4 className="details-section-title">Choose Color</h4>
@@ -68,14 +88,14 @@ class ProductDetails extends Component {
                                                 <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
                                                 <label className="form-check-label" htmlFor="exampleRadios1">Black</label>
                                             </div>
-                                            <div className="form-check mx-1">
-                                                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
-                                                <label className="form-check-label" htmlFor="exampleRadios1">Green</label>
-                                            </div>
-                                            <div className="form-check mx-1">
-                                                <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
-                                                <label className="form-check-label" htmlFor="exampleRadios1">Red</label>
-                                            </div>
+                                            {/*<div className="form-check mx-1">*/}
+                                            {/*    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />*/}
+                                            {/*    <label className="form-check-label" htmlFor="exampleRadios1">Green</label>*/}
+                                            {/*</div>*/}
+                                            {/*<div className="form-check mx-1">*/}
+                                            {/*    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />*/}
+                                            {/*    <label className="form-check-label" htmlFor="exampleRadios1">Red</label>*/}
+                                            {/*</div>*/}
                                             </div>
                                         </Col>
                                         <Col xs={12} xl={12} lg={12} sm={12} md={12}>

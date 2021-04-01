@@ -6,12 +6,13 @@ import {Card, Container} from "react-bootstrap";
 import axios from "axios";
 import ApiURL from "../../api/ApiURL";
 import NewArrivalPlaceholder from "../Placeholder/NewArrivalPlaceholder";
+import {Link} from "react-router-dom";
 
 class NewArrival extends Component {
     componentDidMount() {
         axios.get(ApiURL.newArrival).then(response => {
             if (response.status == 200) {
-                this.setState({newArrival: response.data,isLoading:"d-none",mainDiv:""})
+                this.setState({newArrival: response.data, isLoading: "d-none", mainDiv: ""})
             }
         }).catch();
     }
@@ -78,15 +79,34 @@ class NewArrival extends Component {
 
         let ParentList = this.state.newArrival;
         const MyList = ParentList.map((ParentList, i) => {
+            if (ParentList.special_price == "NA") {
 
-            return <Card className="image-box  w-100 card">
-                <img className=""
-                     src={ParentList.thumbnail}/>
-                <Card.Body>
-                    <p className="product-name-on-card">{ParentList.title}</p>
-                    <p className="product-price-on-card">{ParentList.price}</p>
-                </Card.Body>
-            </Card>
+                return <div className="p-1" key={i.toString()}>
+                    <Link to={"/productDetails/" + ParentList.product_code}>
+                        <Card className="image-box  w-100 card">
+                            <img className=""
+                                 src={ParentList.thumbnail}/>
+                            <Card.Body>
+                                <p className="product-name-on-card">{ParentList.title}</p>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </div>
+            } else {
+                return <div className="p-1" key={i.toString()}>
+                    <Link to={"/productDetails/" + ParentList.product_code}>
+                        <Card className="image-box  w-100 card">
+                            <img className=""
+                                 src={ParentList.thumbnail}/>
+                            <Card.Body>
+                                <p className="product-name-on-card">{ParentList.title}</p>
+                                <p className="product-price-on-card"><strike>{ParentList.price}</strike></p>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                </div>
+            }
+
 
         })
         return (

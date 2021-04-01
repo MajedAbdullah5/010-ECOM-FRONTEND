@@ -55,10 +55,8 @@ class ProductListBySubCategory extends Component {
                 <div className="Mobile">
                     <FooterMobile/>
                 </div>
-
             </Fragment>
         );
     }
 }
-
 export default ProductListBySubCategory;
