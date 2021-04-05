@@ -1,91 +1,70 @@
 import React, {Component, Fragment} from 'react';
 import {Container, Row, Col, Card,Modal,Button} from "react-bootstrap";
+import axios from 'axios';
+import ApiURL from "../../api/ApiURL";
 
 class Notification extends Component {
     constructor() {
         super();
         this.state={
-            modal:false
+            History:[],
+            modal:false,
+            title:"",
+            message:"",
+            date:""
         }
     }
-    modalOpen=()=>{
-        this.setState({modal:true})
+    componentDidMount() {
+        axios.get(ApiURL.notification_history).then(
+            response=>{
+                if(response.status == 200){
+                   this.setState({History:response.data});
+                }
+            }
+        ).catch(
+
+        );
+    }
+
+    modalOpen=(event)=>{
+            let title = event.target.getAttribute('data-title');
+            let message = event.target.getAttribute('data-message');
+            let date = event.target.getAttribute('data-date');
+        this.setState({modal:true,title:title,message:message,date:date});
     }
     modalClose=()=>{
-        this.setState({modal:false})
+        this.setState({modal:false});
     }
     render() {
+        let data = this.state.History;
+        var MyData = data.map((MyData,i)=>{
+            return(
+                <Col className="mb-2" lg={3} md={3} sm={6} xs={12}>
+                    <Card>
+                        <Card.Body>
+                            <h6 className="product-name-on-card"><i className="fas fa-bell"></i>{MyData.Title}</h6>
+                            <small className="product-price-on-card">Date: {MyData.Date} | Status: unread</small>
+                            <a className="d-flex justify-content-end" onClick={this.modalOpen} data-title={MyData.Title} data-message={MyData.Message} data-date={MyData.Date}>&#128065; </a>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            );
+        });
         return (
             <Fragment>
-                <Container className="TopSection onboardMargin mt-5 pt-5">
+                <Container fluid={true} className="TopSection onboardMargin mt-5 pt-5">
                     <Row>
-                        <Col className="mb-2" lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card onClick={this.modalOpen}>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col><Col className="mb-2"  lg={6} lg={6} md={6} sm={12} xs={12}>
-                            <Card>
-                                <Card.Body>
-                                    <h6 className="product-name-on-card"><i className="fas fa-bell"></i> Lorem ipsum dolor sit amet, consectetur adipisicing.</h6>
-                                    <small className="product-price-on-card">Date: 22/08/2020 | Status: unread</small>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                        {MyData}
                     </Row>
                 </Container>
                 <Modal size="lg" show={this.state.modal}>
                     <Modal.Body className="p-5">
-                        <h5 className="details-section-title">This is the title</h5>
-                        <p className="section-sub-title text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa dolore enim eum harum illo quibusdam quisquam tenetur voluptas voluptatum? Accusamus ipsum, magnam. Accusantium aliquid aut delectus error explicabo facilis fugiat fugit, harum illo in iusto libero minus nihil placeat praesentium quaerat qui quidem quis rerum sint soluta tempora ullam.</p>
+                        <h5 className="details-section-title">{this.state.title}</h5>
+                        <p className="section-sub-title text-justify">{this.state.message}</p>
                     </Modal.Body>
 
-                    <Modal.Footer>
+                    <Modal.Footer className="justify-content-between">
+                        <small>Date: {this.state.date}</small>
                         <Button onClick={this.modalClose} variant="secondary">Close</Button>
                     </Modal.Footer>
                 </Modal>
