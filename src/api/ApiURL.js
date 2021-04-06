@@ -54,6 +54,8 @@ class ApiURL {
     static DeleteItem(id) {
         return this.BaseURL + "DeleteItem/" + id;
     }
+    static onAdd = this.BaseURL+"onAdd";
+    static onSubtract = this.BaseURL+"onSubtract";
 
 }
 
